@@ -27,4 +27,4 @@ jobs:
       run: |
         # Use a Node.js runtime with a specific version
         nvm use 18.18.1
-        node https://github.com/romankurilko/randomCatFacts/main.js
+        node https://github.com/romankurilko/randomCatFacts/blob/main/main.js
