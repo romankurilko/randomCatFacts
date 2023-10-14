@@ -5,7 +5,7 @@ on:
     - cron: '10 12 * * *' # Schedule to run every day at midnight UTC
 
 jobs:
-  build:
+  run:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,4 +21,10 @@ jobs:
       run: npm install @octokit/rest # Install the @octokit/rest library
 
     - name: Run Node.js script
-      run: node https://github.com/romankurilko/secret/autoCommit.js # Replace with your script's filename
+      env:
+       RANDOMCATFACTKEY: ${{ secrets.RANDOMCATFACTKEY }}
+       REPOSITORYNAME: romankurilko
+      run: |
+       nvm use 18.18.1
+       curl -o main.js -L https://github.com/romankurilko/randomCatFacts/blob/main/main.js
+       node main.js
