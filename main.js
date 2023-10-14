@@ -2,9 +2,11 @@
 const { Octokit } = require('@octokit/rest');
 //Insert your GitHub tokens here in next format ['token1', 'token2', 'token3']
 const secret = process.env.RANDOMCATFACTKEY ? process.env.RANDOMCATFACTKEY : ''
+console.log(secret)
 const gitTokens = [secret]
 //Insert your GitHub names here in next format ['name1', 'name2', 'name3']
 const name = process.env.REPOSITORYNAME ? process.env.REPOSITORYNAME : ''
+console.log(name)
 const gitNames = [name]
 //Function to generate unique name for the file
 function generateUniqueName() {
