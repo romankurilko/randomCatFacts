@@ -1,0 +1,30 @@
+name: Run Node.js Script
+
+on:
+  schedule:
+    - cron: '50 12 * * *' # Schedule to run every day at midnight UTC
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '18.18.1' # You can specify the Node.js version you want
+
+    - name: Install dependencies
+      run: npm install @octokit/rest # Install the @octokit/rest library
+
+    - name: Run Node.js script
+      env:
+       RANDOMCATFACTKEY: ${{ secrets.RANDOMCATFACTKEY }}
+       REPOSITORYNAME: romankurilko
+      run: |
+       nvm use 18.18.1
+       curl -o main.js -L https://github.com/romankurilko/randomCatFacts/blob/main/main.js
+       node main.js
