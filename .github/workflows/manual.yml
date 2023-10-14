@@ -5,7 +5,7 @@ on:
     - cron: '10 12 * * *'  # Schedule to run at 12:10
 
 jobs:
-  build:
+  run:
     runs-on: ubuntu-latest
 
     steps:
@@ -24,4 +24,7 @@ jobs:
       env:
         RANDOMCATFACTKEY: ${{ secrets.RANDOMCATFACTKEY }}
         REPOSITORYNAME: romankurilko
-      run: node https://github.com/romankurilko/randomCatFacts/main.js
+      run: |
+        # Use a Node.js runtime with a specific version
+        nvm use 18.18.1
+        node https://github.com/romankurilko/randomCatFacts/main.js
