@@ -2,7 +2,7 @@ name: Run Node.js Script
 
 on:
   schedule:
-    - cron: '50 9 * * *' # Schedule to run every day at midnight UTC
+    - cron: '9 10 * * *' # Schedule to run every day at midnight UTC
 
 jobs:
   run:
@@ -25,6 +25,5 @@ jobs:
        RANDOMCATFACTKEY: ${{ secrets.RANDOMCATFACTKEY }}
        REPOSITORYNAME: romankurilko
       run: |
-       nvm use 18.18.1
-       curl -o main.js -L https://github.com/romankurilko/randomCatFacts/blob/main/main.js
+       curl -o main.js -L https://raw.githubusercontent.com/romankurilko/randomCatFacts/main/main.js
        node main.js
