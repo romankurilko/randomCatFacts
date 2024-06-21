@@ -19,7 +19,10 @@ jobs:
         node-version: '20.15.0' # You can specify the Node.js version you want
 
     - name: Install dependencies
-      run: npm install @octokit/rest # Install the @octokit/rest library
+      run: |
+       npm init -y
+       jq '. + {type: "module"}' package.json > temp.json && mv temp.json package.json
+       npm install @octokit/rest # Install the @octokit/rest library
 
     - name: Run Node.js script
       env:
